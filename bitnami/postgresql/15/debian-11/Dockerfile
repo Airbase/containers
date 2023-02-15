@@ -56,6 +56,8 @@ ENV APP_VERSION="15.2.0" \
     NSS_WRAPPER_LIB="/opt/bitnami/common/lib/libnss_wrapper.so" \
     PATH="/opt/bitnami/common/bin:/opt/bitnami/postgresql/bin:$PATH"
 
+RUN echo max_locks_per_transaction = 128 | tee -a /opt/bitnami/postgresql/conf/postgresql.conf
+
 VOLUME [ "/bitnami/postgresql", "/docker-entrypoint-initdb.d", "/docker-entrypoint-preinitdb.d" ]
 
 EXPOSE 5432
